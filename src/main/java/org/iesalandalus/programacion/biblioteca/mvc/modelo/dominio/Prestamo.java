@@ -38,6 +38,10 @@ public class Prestamo {
 		setAlumno(new Alumno(copiaPrestamo.getAlumno()));
 		setLibro(new Libro(copiaPrestamo.getLibro()));
 		setFechaPrestamo(copiaPrestamo.getFechaPrestamo());
+		if (copiaPrestamo.getFechaDevolucion()!=null)
+		{
+			setFechaDevolucion(copiaPrestamo.getFechaDevolucion());
+		}
 	}
 
 	public static Prestamo getPrestamoFicticio(Alumno alumno, Libro libro)
