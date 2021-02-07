@@ -103,8 +103,8 @@ public class Modelo {
 		return prestamos.get();
 	}
 	
-	public Prestamo[] getPrestamos(Alumno alumnmo) {
-		return prestamos.get(alumnmo);
+	public Prestamo[] getPrestamos(Alumno alumno) {
+		return prestamos.get(alumno);
 	}
 	
 	public Prestamo[] getPrestamos(Libro libro) {

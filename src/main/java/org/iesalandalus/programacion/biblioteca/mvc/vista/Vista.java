@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.biblioteca.mvc.controlador.Controlador;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Libro;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Prestamo;
@@ -126,7 +127,7 @@ public class Vista {
 	public void prestarLibro() {
 		Consola.mostrarCabecera("Prestar Libro");
 		try {
-			controlador.prestar(Consola.leerLibro());
+			controlador.prestar(Consola.leerPrestamo());
 			System.out.println("Libro prestado satisfactoriamente.");
 		} catch (OperationNotSupportedException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -136,7 +137,7 @@ public class Vista {
 	public void devolverLibro() {
 		Consola.mostrarCabecera("Devolver Libro");
 		try {
-			controlador.devolver(Consola.leerLibro());
+			controlador.devolver(Consola.leerPrestamo(), Consola.leerFecha());
 			System.out.println("Libro devuelto satisfactoriamente.");
 		} catch (OperationNotSupportedException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
