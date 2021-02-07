@@ -2,67 +2,67 @@ package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
 public enum Opcion {
 
-	INSERTAR_ALUMNO("Insertar alumno") {
+	INSERTAR_ALUMNO("Insertar Alumno") {
 		public void ejecutar() {
 			vista.insertarAlumno();
 		}
 	},
-	BUSCAR_ALUMNO("Buscar alumno") {
+	BUSCAR_ALUMNO("Buscar Alumno") {
 		public void ejecutar() {
 			vista.buscarAlumno();
 		}
 	},
-	BORRAR_ALUMNO("Borrar alumno") {
+	BORRAR_ALUMNO("Borrar Alumno") {
 		public void ejecutar() {
 			vista.borrarAlumno();
 		}
 	},
-	LISTAR_ALUMNOS("Listar alumnos") {
+	LISTAR_ALUMNOS("Listar Alumnos") {
 		public void ejecutar() {
 			vista.listarAlumnos();
 		}
 	},
-	INSERTAR_LIBRO("Insertar libro") {
+	INSERTAR_LIBRO("Insertar Libro") {
 		public void ejecutar() {
 			vista.insertarLibro();
 		}
 	},
-	BUSCAR_LIBRO("Buscar libro") {
+	BUSCAR_LIBRO("Buscar Libro") {
 		public void ejecutar() {
 			vista.buscarLibro();
 		}
 	},
-	BORRAR_LIBRO("Borrar libro") {
+	BORRAR_LIBRO("Borrar Libro") {
 		public void ejecutar() {
 			vista.borrarLibro();
 		}
 	},
-	LISTAR_LIBROS("Listar libros") {
+	LISTAR_LIBROS("Listar Libros") {
 		public void ejecutar() {
 			vista.listarLibros();
 		}
 	},
-	PRESTAR_LIBRO("Prestar libro") {
+	PRESTAR_LIBRO("Prestar Libro") {
 		public void ejecutar() {
 			vista.prestarLibro();
 		}
 	},
-	DEVOLVER_LIBRO("Devolver libro") {
+	DEVOLVER_LIBRO("Devolver Libro") {
 		public void ejecutar() {
 			vista.devolverLibro();
 		}
 	},
-	BUSCAR_PRESTAMO("Buscar prestamo") {
+	BUSCAR_PRESTAMO("Buscar Prestamo") {
 		public void ejecutar() {
 			vista.buscarPrestamo();
 		}
 	},
-	BORRAR_PRESTAMO("Borrar prestamo") {
+	BORRAR_PRESTAMO("Borrar Prestamo") {
 		public void ejecutar() {
 			vista.borrarPrestamo();
 		}
 	},
-	LISTAR_PRESTAMOS("Listar prestamos") {
+	LISTAR_PRESTAMOS("Listar Prestamos") {
 		public void ejecutar() {
 			vista.listarPrestamos();
 		}

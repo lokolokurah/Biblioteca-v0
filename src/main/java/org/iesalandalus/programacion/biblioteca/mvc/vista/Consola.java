@@ -103,7 +103,7 @@ public class Consola {
 		return Prestamo.getPrestamoFicticio(leerAlumno(), leerLibro());
 	}
 	
-	private static LocalDate leerFecha() {
+	public static LocalDate leerFecha() {
 		LocalDate fecha = null;
 		String cadenaFormato = "dd/MM/yyyy";
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(cadenaFormato);
