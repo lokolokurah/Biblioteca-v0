@@ -14,19 +14,19 @@ public class Consola {
 
 	private Consola() {	
 	}
-	
+
 	public static void mostrarMenu() {
 		for (Opcion opcion: Opcion.values()) {
-			System.out.println(opcion);
+			System.out.println("\n"+opcion);
 		}
 	}
-	
+
 	public static void mostrarCabecera(String mensajeCabecera) {
 		System.out.printf("%n%s%n", mensajeCabecera);
 		String formatoStr = "%0" + mensajeCabecera.length() + "d%n";
-		System.out.println(String.format(formatoStr, 0).replace("0", "-"));
+		System.out.print(String.format(formatoStr, 0).replace("0", "-"));
 	}
-	
+
 	public static int elegirOpcion() {
 		int ordinalOpcion;
 		do {
@@ -35,24 +35,20 @@ public class Consola {
 		} while (!Opcion.esOrdinalValido(ordinalOpcion));
 		return ordinalOpcion;
 	}
-	
+
 	public static Alumno leerAlumno() {
 		Alumno alumno = null;
 		Curso curso = null;
 		String nombre;
 		String correo;
 		int numeroCurso;
+		System.out.printf("\nIntroduce el nombre del alumno: ");
+		nombre = Entrada.cadena();
+		System.out.print("Introduce el correo del alumno: ");
+		correo = Entrada.cadena();
 		do {
-			System.out.print("Introduce el nombre del alumno: ");
-			nombre = Entrada.cadena();
-		} while (nombre.isEmpty());
-		do {
-			System.out.print("Introduce el correo del alumno: ");
-			correo = Entrada.cadena();
-		} while(correo.isEmpty());
-		do {
-			System.out.print("Introduce el curso del alumno: ");
-		    numeroCurso = Entrada.entero();
+			System.out.print("Introduce el curso del alumno: [1, 2, 3, 4] ");
+			numeroCurso = Entrada.entero();
 		} while (numeroCurso<1 || numeroCurso>4);
 		switch (numeroCurso) {
 		case 1: 
@@ -71,14 +67,14 @@ public class Consola {
 		alumno = new Alumno(nombre, correo, curso);
 		return alumno;
 	}
-	
+
 	public static Alumno leerAlumnoFicticio() {
-		System.out.print("Introduce el correo del alumno: ");
+		System.out.print("\nIntroduce el correo del alumno: ");
 		return Alumno.getAlumnoFicticio(Entrada.cadena());
 	}
-	
+
 	public static Libro leerLibro() {
-		System.out.print("Introduce el titulo del libro: ");
+		System.out.print("\nIntroduce el titulo del libro: ");
 		String titulo = Entrada.cadena();
 		System.out.print("Introduce el autor del libro: ");
 		String autor = Entrada.cadena();
@@ -86,28 +82,28 @@ public class Consola {
 		int numPaginas = Entrada.entero();
 		return new Libro(titulo, autor, numPaginas);
 	}
-	
+
 	public static Libro leerLibroFicticio() {
-		System.out.print("Introduce el titulo del libro: ");
+		System.out.print("\nIntroduce el titulo del libro: ");
 		String titulo = Entrada.cadena();
 		System.out.print("Introduce el autor del libro: ");
 		String autor = Entrada.cadena();
 		return Libro.getLibroFicticio(titulo, autor);
 	}
-	
+
 	public static Prestamo leerPrestamo() {
 		return new Prestamo(leerAlumno(), leerLibro(), leerFecha());
 	}
-	
+
 	public static Prestamo leerPrestamoFicticio() {
 		return Prestamo.getPrestamoFicticio(leerAlumno(), leerLibro());
 	}
-	
+
 	public static LocalDate leerFecha() {
 		LocalDate fecha = null;
 		String cadenaFormato = "dd/MM/yyyy";
 		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern(cadenaFormato);
-		System.out.printf("Introduce la fecha (%s): ", formatoFecha);
+		System.out.printf("\nIntroduce la fecha (%s): ", formatoFecha);
 		String diaLeido = Entrada.cadena();
 		try {
 			fecha = LocalDate.parse(diaLeido, formatoFecha);
@@ -116,5 +112,5 @@ public class Consola {
 		}
 		return fecha;
 	}
-	
+
 }

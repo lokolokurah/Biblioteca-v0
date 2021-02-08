@@ -88,7 +88,7 @@ public class Prestamos {
 		int j = 0;
 		for (int i=0; !tamanoSuperado(i); ++i)
 		{
-			if (coleccionPrestamos[i].getFechaPrestamo().equals(fechaPrestamo))
+			if (mismoMes(coleccionPrestamos[i].getFechaPrestamo(), fechaPrestamo))
 			{
 				prestamosFecha[j++] = new Prestamo(coleccionPrestamos[i]);
 			}
@@ -98,8 +98,7 @@ public class Prestamos {
 
 	private boolean mismoMes(LocalDate fechaInicial, LocalDate fechaFinal)
 	{
-		// Fix 1
-		return true;
+		return (fechaInicial.equals(fechaFinal));
 	}
 
 	public int getTamano() {

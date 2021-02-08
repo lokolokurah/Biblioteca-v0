@@ -10,15 +10,15 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Prestamo;
 public class Vista {
 
 	private Controlador controlador;
-	
+
 	public Vista() {
 		Opcion.setVista(this);
 	}
-	
+
 	public void setControlador(Controlador controlador) {
 		this.controlador = controlador;
 	}
-	
+
 	public void comenzar() {
 		Consola.mostrarCabecera("Gestión de la Biblioteca del IES Al-Ándalus");
 		int ordinalOpcion;
@@ -29,11 +29,11 @@ public class Vista {
 			opcion.ejecutar();
 		} while (ordinalOpcion != Opcion.SALIR.ordinal());
 	}
-	
+
 	public void terminar() {
 		controlador.terminar();
 	}
-	
+
 	public void insertarAlumno() {
 		Consola.mostrarCabecera("Insertar Alumno");
 		try {
@@ -43,7 +43,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void buscarAlumno() {
 		Consola.mostrarCabecera("Buscar Alumno");
 		Alumno alumno;
@@ -55,7 +55,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void borrarAlumno() {
 		Consola.mostrarCabecera("Borrar Alumno");
 		try {
@@ -65,7 +65,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void listarAlumnos() {
 		Consola.mostrarCabecera("Listado de Alumnos");
 		Alumno[] alumnos = controlador.getAlumnos();
@@ -75,10 +75,10 @@ public class Vista {
 					System.out.println(alumno);
 			}
 		} else {
-			System.out.println("No hay alumnos que mostrar.");
+			System.out.println("\nNo hay alumnos que mostrar.");
 		}
 	}
-	
+
 	public void insertarLibro() {
 		Consola.mostrarCabecera("Insertar Libro");
 		try {
@@ -88,7 +88,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void buscarLibro() {
 		Consola.mostrarCabecera("Buscar Libro");
 		Libro libro;
@@ -100,7 +100,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void borrarLibro() {
 		Consola.mostrarCabecera("Borrar Libro");
 		try {
@@ -110,9 +110,9 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void listarLibros() {
-		Consola.mostrarCabecera("Listado de Aulas");
+		Consola.mostrarCabecera("Listado de Libros");
 		Libro[] libros = controlador.getLibros();
 		if (libros[0] != null) {
 			for (Libro libro : libros) {
@@ -120,10 +120,10 @@ public class Vista {
 					System.out.println(libro);
 			}
 		} else {
-			System.out.println("No hay libros que mostrar.");
+			System.out.println("\nNo hay libros que mostrar.");
 		}
 	}
-	
+
 	public void prestarLibro() {
 		Consola.mostrarCabecera("Prestar Libro");
 		try {
@@ -133,7 +133,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void devolverLibro() {
 		Consola.mostrarCabecera("Devolver Libro");
 		try {
@@ -143,7 +143,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void buscarPrestamo() {
 		Consola.mostrarCabecera("Buscar Prestamo");
 		Prestamo prestamo;
@@ -155,7 +155,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void borrarPrestamo() {
 		Consola.mostrarCabecera("Borrar Prestamo");
 		try {
@@ -165,7 +165,7 @@ public class Vista {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void listarPrestamos() {
 		Consola.mostrarCabecera("Listado de Prestamos");
 		Prestamo[] prestamos = controlador.getPrestamos();
@@ -175,47 +175,59 @@ public class Vista {
 					System.out.println(prestamo);
 			}
 		} else {
-			System.out.println("No hay prestamos que mostrar.");
+			System.out.println("\nNo hay prestamos que mostrar.");
 		}
 	}
-	
+
 	public void listarPrestamosAlumno() {
 		Consola.mostrarCabecera("Listado de Prestamos por Alumno");
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerAlumnoFicticio());
-		if (prestamos[0] != null) {
-			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
-					System.out.println(prestamo);
+		try {
+			Prestamo[] prestamos = controlador.getPrestamos(Consola.leerAlumnoFicticio());
+			if (prestamos[0] != null) {
+				for (Prestamo prestamo : prestamos) {
+					if (prestamo != null) 
+						System.out.println(prestamo);
+				}
+			} else {
+				System.out.println("No hay prestamos a mostrar para dicho alumno.");
 			}
-		} else {
-			System.out.println("No hay prestamos a mostrar para dicho alumno.");
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void listarPrestamosLibro() {
 		Consola.mostrarCabecera("Listado de Prestamos por Libro");
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerLibroFicticio());
-		if (prestamos[0] != null) {
-			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
-					System.out.println(prestamo);
+		try {
+			Prestamo[] prestamos = controlador.getPrestamos(Consola.leerLibroFicticio());
+			if (prestamos[0] != null) {
+				for (Prestamo prestamo : prestamos) {
+					if (prestamo != null) 
+						System.out.println(prestamo);
+				}
+			} else {
+				System.out.println("No hay prestamos a mostrar para dicho libro.");
 			}
-		} else {
-			System.out.println("No hay prestamos a mostrar para dicho libro.");
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void listarPrestamosFecha() {
 		Consola.mostrarCabecera("Listado de Prestamos por Fecha");
-		Prestamo[] prestamos = controlador.getPrestamos(Consola.leerFecha());
-		if (prestamos[0] != null) {
-			for (Prestamo prestamo : prestamos) {
-				if (prestamo != null) 
-					System.out.println(prestamo);
+		try {
+			Prestamo[] prestamos = controlador.getPrestamos(Consola.leerFecha());
+			if (prestamos[0] != null) {
+				for (Prestamo prestamo : prestamos) {
+					if (prestamo != null) 
+						System.out.println(prestamo);
+				}
+			} else {
+				System.out.println("No hay prestamos a mostrar para dicho libro.");
 			}
-		} else {
-			System.out.println("No hay prestamos a mostrar para dicho libro.");
+		} catch (NullPointerException e) {
+			e.getMessage();
 		}
 	}
-	
+
 }

@@ -17,21 +17,21 @@ public class Modelo {
 	private Alumnos alumnos;
 	private Prestamos prestamos;
 	private Libros libros;
-	
+
 	public Modelo() {
 		alumnos = new Alumnos(CAPACIDAD);
 		prestamos = new Prestamos(CAPACIDAD);
 		libros = new Libros(CAPACIDAD);
 	}
-	
+
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {
 		alumnos.insertar(alumno);
 	}
-	
+
 	public void insertar(Libro libro) throws OperationNotSupportedException {
 		libros.insertar(libro);
 	}
-	
+
 	public void prestar(Prestamo prestamo) throws OperationNotSupportedException {
 		if (prestamo==null) 
 		{
@@ -49,7 +49,7 @@ public class Modelo {
 		}
 		prestamos.prestar(new Prestamo(alumno, libro, prestamo.getFechaPrestamo()));
 	}
-	
+
 	public void devolver(Prestamo prestamo, LocalDate fechaDevolucion) throws OperationNotSupportedException {
 		if (prestamo==null) 
 		{
@@ -66,27 +66,27 @@ public class Modelo {
 		}
 		prestamos.devolver(prestamo, fechaDevolucion);
 	}
-	
+
 	public Alumno buscar(Alumno alumno) {
 		return alumnos.buscar(alumno);
 	}
-	
+
 	public Libro buscar(Libro libro) {
 		return libros.buscar(libro);
 	}
-	
+
 	public Prestamo buscar(Prestamo prestamo) {
 		return prestamos.buscar(prestamo);
 	}
-	
+
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
 		alumnos.borrar(alumno);
 	}
-	
+
 	public void borrar(Libro libro) throws OperationNotSupportedException {
 		libros.borrar(libro);
 	}
-	
+
 	public void borrar(Prestamo prestamo) throws OperationNotSupportedException {
 		prestamos.borrar(prestamo);
 	}
@@ -94,25 +94,25 @@ public class Modelo {
 	public Alumno[] getAlumnos() {
 		return alumnos.get();
 	}
-	
+
 	public Libro[] getLibros() {
 		return libros.get();
 	}
-	
+
 	public Prestamo[] getPrestamos() {
 		return prestamos.get();
 	}
-	
+
 	public Prestamo[] getPrestamos(Alumno alumno) {
 		return prestamos.get(alumno);
 	}
-	
+
 	public Prestamo[] getPrestamos(Libro libro) {
 		return prestamos.get(libro);
 	}
-	
+
 	public Prestamo[] getPrestamos(LocalDate fechaPrestamo) {
 		return prestamos.get(fechaPrestamo);
 	}
-	
+
 }

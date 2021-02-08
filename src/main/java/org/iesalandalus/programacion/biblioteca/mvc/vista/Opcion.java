@@ -87,34 +87,34 @@ public enum Opcion {
 			vista.terminar();
 		}
 	};
-	
+
 	private String mensaje;
 	private static Vista vista;
-	
+
 	private Opcion(String mensaje) {
 		this.mensaje = mensaje;
 	}
-	
+
 	public abstract void ejecutar();
-	
+
 	protected static void setVista(Vista vista) {
 		Opcion.vista = vista;
 	}
-	
+
 	public static Opcion getOpcionSegunOridnal(int ordinal) {
 		if (esOrdinalValido(ordinal))
 			return values()[ordinal];
 		else
 			throw new IllegalArgumentException("Ordinal de la opción no válido");
 	}
-	
+
 	public static boolean esOrdinalValido(int ordinal) {
 		return (ordinal >= 0 && ordinal <= values().length - 1);
 	}
-		
+
 	@Override
 	public String toString() {
 		return String.format("%d.- %s", ordinal(), mensaje);
 	}
-	
+
 }
