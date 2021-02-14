@@ -61,7 +61,7 @@ public class Prestamo {
 
 	public void devolver(LocalDate fechaDevolucion)
 	{
-		if (getFechaDevolucion()!=null && getFechaDevolucion().isEqual(fechaDevolucion))
+		if (getFechaDevolucion()!=null)
 		{
 			throw new IllegalArgumentException("ERROR: La devolución ya estaba registrada.");
 		}

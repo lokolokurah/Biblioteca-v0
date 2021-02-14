@@ -5,8 +5,6 @@ import java.time.Month;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.checkerframework.framework.qual.CFComment;
-import org.checkerframework.framework.qual.DefaultInUncheckedCodeFor;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Libro;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Prestamo;
@@ -98,7 +96,14 @@ public class Prestamos {
 
 	private boolean mismoMes(LocalDate fechaInicial, LocalDate fechaFinal)
 	{
-		return (fechaInicial.equals(fechaFinal));
+		boolean fecha = false;
+		Month mes = fechaInicial.getMonth();
+		int anio = fechaInicial.getYear();
+		if (mes.equals(fechaFinal.getMonth()) && anio==fechaFinal.getYear())
+		{
+			fecha = true;
+		}
+		return fecha;
 	}
 
 	public int getTamano() {

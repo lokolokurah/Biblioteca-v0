@@ -93,7 +93,7 @@ public class Vista {
 		Consola.mostrarCabecera("Buscar Libro");
 		Libro libro;
 		try {
-			libro = controlador.buscar(Consola.leerLibro());
+			libro = controlador.buscar(Consola.leerLibroFicticio());
 			String mensaje = (libro != null) ? libro.toString() : "No existe dicho libro.";
 			System.out.println(mensaje);
 		} catch (IllegalArgumentException e) {
@@ -104,7 +104,7 @@ public class Vista {
 	public void borrarLibro() {
 		Consola.mostrarCabecera("Borrar Libro");
 		try {
-			controlador.borrar(Consola.leerLibro());
+			controlador.borrar(Consola.leerLibroFicticio());
 			System.out.println("Libro borrado satisfactoriamente.");
 		}  catch (OperationNotSupportedException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -137,7 +137,7 @@ public class Vista {
 	public void devolverLibro() {
 		Consola.mostrarCabecera("Devolver Libro");
 		try {
-			controlador.devolver(Consola.leerPrestamo(), Consola.leerFecha());
+			controlador.devolver(Consola.leerPrestamoFicticio(), Consola.leerFecha());
 			System.out.println("Libro devuelto satisfactoriamente.");
 		} catch (OperationNotSupportedException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());

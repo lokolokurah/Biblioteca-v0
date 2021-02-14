@@ -96,7 +96,7 @@ public class Consola {
 	}
 
 	public static Prestamo leerPrestamoFicticio() {
-		return Prestamo.getPrestamoFicticio(leerAlumno(), leerLibro());
+		return Prestamo.getPrestamoFicticio(leerAlumnoFicticio(), leerLibroFicticio());
 	}
 
 	public static LocalDate leerFecha() {
